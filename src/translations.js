@@ -1,5 +1,12 @@
-const { encodeHTML } = require("./common/utils");
+import { encodeHTML } from "./common/utils.js";
 
+/**
+ * Retrieves stat card labels in the available locales.
+ *
+ * @param {string} name The name of the locale.
+ * @param {string} apostrophe Whether to use apostrophe or not.
+ * @returns {Object} The locales object.
+ */
 const statCardLocales = ({ name, apostrophe }) => {
   const encodedName = encodeHTML(name);
   return {
@@ -170,7 +177,7 @@ const statCardLocales = ({ name, apostrophe }) => {
       fr: "Contribué à",
       hu: "Hozzájárulások",
       it: "Ha contribuito a",
-      ja: "コントリビュートしたリポジトリ",
+      ja: "貢献したリポジトリ",
       kr: "전체 기여도",
       nl: "Bijgedragen aan",
       "pt-pt": "Contribuiu em",
@@ -201,7 +208,7 @@ const repoCardLocales = {
     cs: "Šablona",
     de: "Vorlage",
     en: "Template",
-    es: "Planitlla",
+    es: "Plantilla",
     fr: "Modèle",
     hu: "Sablon",
     it: "Template",
@@ -354,11 +361,17 @@ const wakatimeCardLocales = {
 
 const availableLocales = Object.keys(repoCardLocales["repocard.archived"]);
 
+/**
+ * Checks whether the locale is available or not.
+ *
+ * @param {string} locale The locale to check.
+ * @returns {boolean} Boolean specifying whether the locale is available or not.
+ */
 function isLocaleAvailable(locale) {
   return availableLocales.includes(locale.toLowerCase());
 }
 
-module.exports = {
+export {
   isLocaleAvailable,
   availableLocales,
   statCardLocales,
